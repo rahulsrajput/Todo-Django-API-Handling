@@ -32,7 +32,7 @@
                                     <span><a href="" class="anchor">{{i.title}}</a></span>
                                 </div>
 
-                                <form action="" method="post">
+                                <form action="{% url 'delete' i.id %}" method="post">
                                     {% csrf_token %}
                                     
                                     <button type="submit" class="btn btn-danger">

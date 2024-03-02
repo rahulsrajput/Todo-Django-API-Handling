@@ -5,10 +5,9 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 object_list = []
+url = 'https://api.freeapi.app/api/v1/todos'
+
 def home(request, id=0):
-    
-    url = 'https://api.freeapi.app/api/v1/todos'
-    
     response = requests.get(url)
     object = response.json()
     # print(object)
@@ -29,4 +28,14 @@ def home(request, id=0):
             requests.post(url, json=new_data)
             return HttpResponseRedirect('/')
         
+    
+    
     return render(request, 'base/home.html', context={'objects':object_list})
+
+
+def delete_task(request, str):
+    base_url = f'https://api.freeapi.app/api/v1/todos/{str}'
+    requests.delete(base_url)
+    return HttpResponseRedirect('/')
+
+

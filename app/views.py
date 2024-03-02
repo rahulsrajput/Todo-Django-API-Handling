@@ -1,7 +1,5 @@
 from django.shortcuts import render
 import requests
-from django.http import HttpResponseRedirect
-import json
 
 # Create your views here.
 def home(request):

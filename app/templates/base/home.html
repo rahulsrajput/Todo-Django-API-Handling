@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Todo{% endblock %}
+
+{% block content %}
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+
+                        <h6 class="mb-3">Todo List</h6>
+
+                        <form action="" method="post" class="d-flex justify-content-center align-items-center mb-4">
+                            {% csrf_token %}
+                            <div class="form-outline flex-fill">
+                                <input type="text" id="form3" name="task" class="form-control form-control-lg" />
+                                <label class="form-label" for="form3">What do you need to do today?</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg ms-2">Add</button>
+                        </form>
+
+                        <ul class="list-group mb-0">
+                            {% for i in objects %}
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
+
+                                <div class="d-flex align-items-center" >
+                                    <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
+                                    <span><a href="{% url 'update' i.id %}" class="anchor">{{i.task}}</a></span>
+                                </div>
+
+                                <form action="{% url 'delete' i.id %}" method="post">
+                                    {% csrf_token %}
+                                    
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-times text-white"></i>
+                                    </button>
+
+                                </form>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

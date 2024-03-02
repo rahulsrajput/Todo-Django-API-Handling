@@ -1,0 +1,9 @@
+
+input[type=checkbox]:checked + span {
+    text-decoration: line-through;
+}
+
+.anchor{
+    color: rgb(82, 82, 82);
+    text-decoration: none;
+}

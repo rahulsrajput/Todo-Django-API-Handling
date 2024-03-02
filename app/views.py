@@ -20,6 +20,8 @@ def home(request):
             new_data = {'title':title}
             requests.post(url, new_data)
             return HttpResponseRedirect('/')
+        
+
 
     
     return render(request, 'base/home.html', context={'data':data})

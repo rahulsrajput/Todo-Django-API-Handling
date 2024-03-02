@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 object_list = []
 url = 'https://api.freeapi.app/api/v1/todos'
 
-def home(request, id=0):
+def home(request):
     response = requests.get(url)
     object = response.json()
     # print(object)
@@ -39,3 +39,20 @@ def delete_task(request, str):
     return HttpResponseRedirect('/')
 
 
+def update_task(request, str):
+    base_url = f'https://api.freeapi.app/api/v1/todos/{str}'
+    repsonse = requests.get(base_url)
+    
+    object = repsonse.json()
+    
+    if object['success'] and object['data']:
+        data = object['data']
+        # print(data)
+    
+    if request.method == 'POST':
+        updated_title = request.POST['updated_task']
+        updated_data = {'title':updated_title}
+        requests.patch(base_url, json=updated_data)
+        return HttpResponseRedirect('/')
+
+    return render(request, 'base/update.html', context={'data':data})

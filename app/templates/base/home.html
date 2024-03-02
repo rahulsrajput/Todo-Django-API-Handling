@@ -29,9 +29,11 @@
 
                                 <div class="d-flex align-items-center" >
                                     <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
-                                    <span><a href="" class="anchor">{{i.title}}</a></span>
+                                    <span><a href="{% url 'update' i.id %}" class="anchor">{{i.title}}</a></span>
                                 </div>
 
+                               
+                               
                                 <form action="{% url 'delete' i.id %}" method="post">
                                     {% csrf_token %}
                                     

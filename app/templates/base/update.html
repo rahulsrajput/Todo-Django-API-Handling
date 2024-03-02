@@ -16,7 +16,7 @@
                         <form action="" method="post" class="d-flex justify-content-center align-items-center mb-4">
                             {% csrf_token %}
                             <div class="form-outline flex-fill">
-                                <input type="text" id="form3" name="task" class="form-control form-control-lg" value="{{obj.task}}"/>
+                                <input type="text" id="form3" name="updated_task" class="form-control form-control-lg" value="{{data.title}}"/>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg ms-2">Update</button>
                         </form>
